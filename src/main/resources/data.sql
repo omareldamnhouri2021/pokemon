@@ -1,6 +1,3 @@
-insert into POKEMON
-values(100,100, 1, 'lala', 30);
-insert into POKEMON
-values(102,100, 1, 'lala2', 15);
-insert into POKEMON
-values(101,100, 1, 'lala3', 15);
+INSERT INTO POKEMON(name, level, health, strength, selected) VALUES
+('Pikachu', 30, 100, 200, true),
+('Charmander', 15, 100, 300, false);
