@@ -1,5 +1,8 @@
 package com.omar.crud;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +10,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Getter
+@Setter
 public class Pokemon {
 
     @Id
@@ -23,53 +28,6 @@ public class Pokemon {
 
   //  @NotBlank(message = "Strength is mandatory")
     private int strength;
-
-    public Pokemon() {}
-
-    public Pokemon(String name, int level, int health, int strength) {
-        this.name = name;
-        this.level = level;
-        this.health = health;
-        this.strength = strength;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public void setStrength(int strength){
-        this.strength = strength;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-    public int getHealth() {
-        return health;
-    }
-
-    public int getStrength(){
-        return strength;
-    }
 
     @Override
     public String toString() {
