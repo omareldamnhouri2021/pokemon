@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 @Controller
 public class PokemonController {
@@ -135,11 +138,14 @@ public class PokemonController {
     }
     @GetMapping("/wildbattle")
     public String startWild(Model model){
+        Random ran = new Random();
         Pokemon pokemon = pokemonRepository.findAll().iterator().next();
-        WrapperPokemons wrapper =new WrapperPokemons();
-        PokemonDto pokemonDto = wrapper.getPokemons().get(0);
-        model.addAttribute("pokemon", pokemon);
-        model.addAttribute("opponent" ,pokemonDto );
+        Pokemon opponent = new WrapperPokemons().getRandom();
+        List<Pokemon> pokemons = Arrays.asList(pokemon, opponent);
+        Pokemon winner = pokemon.getHealth() < opponent.getStrength() ? opponent : pokemon;
+        model.addAttribute("pokemons", pokemons);
+        model.addAttribute("winner", winner);
         return "wild-battle";
     }
+
 }

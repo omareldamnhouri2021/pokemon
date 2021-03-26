@@ -5,8 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Welcome to Pokemon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
@@ -24,25 +26,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr th:each="pokemon : ${pokemons}">
                     <td th:text="${pokemon.name}"></td>
                     <td th:text="${pokemon.level}"></td>
                     <td th:text="${pokemon.health}"></td>
-                    <td th:text="${pokemon.strength}">
-                </tr>
-                <tr>
-                    <td th:text="${opponent.strength}"></td>
-                    <td th:text="{opponent.level"></td>
-                    <td th:text="{opponent.health"}></td>
-                    <td th:text="{opponent.strength}">
+                    <td th:text="${pokemon.strength}"></td>
                 </tr>
                 </tbody>
             </table>
+            <h4 th:text="${pokemons[0].name}"></h4><span> VS </span><h4 th:text="${pokemons[1].name}"></h4>
+            <div th:object="${winner}" class="row">
+                <h3>Winner: <span th:text="${winner.name}"></span></h3>
+            </div>
         </div>
     </div>
-</div>
-
-
 </div>
 </body>
 </html>
