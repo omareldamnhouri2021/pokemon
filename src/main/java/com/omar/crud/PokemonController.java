@@ -43,9 +43,26 @@ public class PokemonController {
     }
 
     @GetMapping("/hub")
-    public String hub(Model model) {
+    public String WildFight(Pokemon pokemon) {
+        return "fight-wild";
+    }
+
+
+    @GetMapping("/center")
+    public String pokemonCenter(Pokemon pokemon, Model model) {
         model.addAttribute("pokemons", pokemonRepository.findAll());
-        return "hub";
+        return "pokemoncenter";
+    }
+
+    @GetMapping("/heal/{id}")
+    public String healPokemon (@PathVariable("id") long id){
+        Pokemon pokemon = pokemonRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        if (pokemon.getHealth() != 100) {
+            pokemon.setHealth(100);
+            pokemonRepository.save(pokemon);
+            return "redirect:/center";
+        }
+        return "redirect:/center";
     }
 
     @GetMapping("/edit/{id}")
