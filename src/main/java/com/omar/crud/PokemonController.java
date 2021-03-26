@@ -116,4 +116,13 @@ public class PokemonController {
 
         return "redirect:/hub";
     }
+    @GetMapping("/wildbattle")
+    public String startWild(Model model){
+        Pokemon pokemon = pokemonRepository.findAll().iterator().next();
+        WrapperPokemons wrapper =new WrapperPokemons();
+        PokemonDto pokemonDto = wrapper.getPokemons().get(0);
+        model.addAttribute("pokemon", pokemon);
+        model.addAttribute("opponent" ,pokemonDto );
+        return "wild-battle";
+    }
 }
